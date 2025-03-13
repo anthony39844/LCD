@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Pressable,
   ActivityIndicator,
-  ImageBackground,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useFonts } from "expo-font";
@@ -20,10 +19,7 @@ export default function Index() {
   }
 
   return (
-    <ImageBackground
-      source={require("../assets/images/panda.jpg")}
-      style={styles.backgroundImage}
-    >
+    <View>
       <Text style={styles.title}>LeetCode{"\n"}Dailys</Text>
       <View style={styles.buttonContainer}>
         <Pressable style={styles.button} onPress={() => router.push("/signup")}>
@@ -33,7 +29,7 @@ export default function Index() {
           <Text style={styles.buttonText}>Log In</Text>
         </Pressable>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -66,13 +62,5 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 18,
     fontWeight: "bold",
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "cover",
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
   },
 });
