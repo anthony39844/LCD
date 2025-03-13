@@ -1,38 +1,34 @@
 import { Stack } from "expo-router";
-import {
-  SafeAreaView,
-  StatusBar,
-  Platform,
-  ImageBackground,
-  StyleSheet,
-} from "react-native";
+import { SafeAreaView, StatusBar, Platform } from "react-native";
 
 export default function Layout() {
+  const [fontsLoaded] = useFonts({
+    "JetBrainsMono-Regular": require("../assets/fonts/JetBrainsMono-Regular.ttf"),
+  });
+  if (!fontsLoaded) {
+      return <ActivityIndicator size="large" />;
+  }
   return (
-    <ImageBackground
-      source={require("../assets/images/panda.jpg")}
-      style={styles.backgroundImage}
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "lightblue",
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      }}
     >
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: "#82B3FE",
-          paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        }}
-      >
-        <Stack
-          screenOptions={{
-            headerStyle: { backgroundColor: "#82B3FE" },
-            headerTintColor: "white",
-            headerBackTitle: "Back",
-          }}
-        >
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="login" options={{ title: "Login" }} />
-          <Stack.Screen name="signup" options={{ title: "Sign Up" }} />
-        </Stack>
-      </SafeAreaView>
-    </ImageBackground>
+      <Stack
+        screenOptions={{
+          headerStyle: { backgroundColor: "lightblue" }, 
+          headerTintColor: "white",
+          headerBackTitle: "Back"
+        }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen 
+          name="login" 
+          options={{ title: "Login" }} />
+        <Stack.Screen name="signup" options={{ title: "Sign Up" }} />
+      </Stack>
+    </SafeAreaView>
   );
 }
 
