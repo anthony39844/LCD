@@ -1,5 +1,6 @@
 import { Stack } from "expo-router";
-import { SafeAreaView, StatusBar, Platform } from "react-native";
+import { SafeAreaView, StatusBar, Platform, ActivityIndicator } from "react-native";
+import { useFonts } from "expo-font";
 
 export default function Layout() {
   const [fontsLoaded] = useFonts({
@@ -31,14 +32,3 @@ export default function Layout() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "cover",
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-});
