@@ -37,6 +37,14 @@ const globalStyles = StyleSheet.create({
       fontSize: 18,
       fontWeight: "bold",
     },
+    inputBox: {
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 10,
+        margin: 10,
+        width: 300,
+        textAlign: "center",
+    }
 });
 
 
