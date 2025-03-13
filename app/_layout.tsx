@@ -6,13 +6,13 @@ export default function Layout() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "lightblue",
+        backgroundColor: "#82B3FE",
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: "lightblue" }, 
+          headerStyle: { backgroundColor: "#82B3FE" }, 
           headerTintColor: "white",
           headerBackTitle: "Back"
         }}>
