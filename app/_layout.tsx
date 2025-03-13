@@ -1,7 +1,14 @@
 import { Stack } from "expo-router";
-import { SafeAreaView, StatusBar, Platform } from "react-native";
+import { SafeAreaView, StatusBar, Platform, ActivityIndicator } from "react-native";
+import { useFonts } from "expo-font";
 
 export default function Layout() {
+  const [fontsLoaded] = useFonts({
+    "JetBrainsMono-Regular": require("../assets/fonts/JetBrainsMono-Regular.ttf"),
+  });
+  if (!fontsLoaded) {
+      return <ActivityIndicator size="large" />;
+  }
   return (
     <SafeAreaView
       style={{
@@ -17,9 +24,7 @@ export default function Layout() {
           headerBackTitle: "Back"
         }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen 
-          name="login" 
-          options={{ title: "Login" }} />
+        <Stack.Screen name="login" options={{ title: "Login" }} />
         <Stack.Screen name="signup" options={{ title: "Sign Up" }} />
       </Stack>
     </SafeAreaView>
