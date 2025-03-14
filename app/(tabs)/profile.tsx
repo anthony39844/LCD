@@ -1,7 +1,6 @@
 import { View, Text, Pressable } from 'react-native'
 import React from 'react'
 import {getGlobalStyles} from '@/styles/globalStyles'
-import Navbar from '@/components/Navbar'
 
 export default function Profile() {
     const globalStyles = getGlobalStyles();
@@ -14,7 +13,6 @@ export default function Profile() {
         <View style={globalStyles.module}>
             <Text>Streak: </Text>
         </View>
-        <Navbar clicked="profile" />
         </View>
     )
 }

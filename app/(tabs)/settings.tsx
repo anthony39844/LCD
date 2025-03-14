@@ -1,7 +1,6 @@
 import { View, Text, Pressable } from 'react-native'
 import React from 'react'
-import Navbar from '@/components/Navbar'
-import { RelativePathString, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { getGlobalStyles } from '@/styles/globalStyles'
 
 export default function Settings() {
@@ -14,7 +13,6 @@ export default function Settings() {
             <Pressable style={globalStyles.button} onPress={() => router.replace("/")}>
                 <Text style={globalStyles.buttonText}>Log Out</Text>
             </Pressable>
-            <Navbar clicked="settings" />
         </View>
     )
 }

@@ -25,37 +25,33 @@ export function getGlobalStyles() {
       width: '100%',
     },
     navItem: {
-      padding: 0,
       alignItems: 'center',
-    },    
+    },  
+    focusedNavItem: {
+      alignItems: 'center',
+      borderBottomColor: colors.border,
+      borderBottomWidth: 5,
+      borderBottomEndRadius: 5,
+      borderBottomStartRadius: 5,
+    }, 
     navbarText: {
       fontFamily: 'JetBrainsMono-Regular',
       fontSize: 12,
       fontWeight: 'bold',
+      paddingVertical: 10,
       color: colors.textUnfocused,
     },
     focusedNavbarText: {
       fontFamily: 'JetBrainsMono-Regular',
       fontWeight: 'bold',
       fontSize: 12,
+      paddingVertical: 10,
       color: colors.text,
-      borderBottomColor: colors.border,
-      borderBottomWidth: 5,
-      borderBottomEndRadius: 5,
-      borderBottomStartRadius: 5,
     },
     
 
     // actually global styles
     container: {
-      backgroundColor: colors.primary,
-      height: "100%",
-      alignItems: "center",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
-    },
-    homeContainer: {
       backgroundColor: colors.primary,
       height: "100%",
       alignItems: "center",

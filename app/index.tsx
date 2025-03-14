@@ -7,7 +7,7 @@ export default function Index() {
   const globalStyles = getGlobalStyles();
 
   return (
-      <View style={globalStyles.homeContainer}>
+      <View style={globalStyles.container}>
         <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
         <View style={globalStyles.buttonContainer}>
           <Pressable style={globalStyles.button} onPress={() => router.push("/signup")}>

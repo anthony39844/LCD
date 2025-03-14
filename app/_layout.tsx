@@ -2,12 +2,23 @@ import { Stack } from "expo-router";
 import { SafeAreaView, StatusBar, Platform, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
 import {getGlobalStyles} from "@/styles/globalStyles";
+import { useEffect } from "react";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   const globalStyles = getGlobalStyles();
   const [fontsLoaded] = useFonts({
     "JetBrainsMono-Regular": require("../assets/fonts/JetBrainsMono-Regular.ttf"),
   });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
       return <ActivityIndicator size="large" />;
   }
@@ -18,14 +29,10 @@ export default function Layout() {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false, animation: "none" }} />
-        <Stack.Screen name="login" options={{ headerShown: false, animation: "none" }} />
-        <Stack.Screen name="signup" options={{ headerShown: false, animation: "none" }} />
-        <Stack.Screen name="home" options={{ headerShown: false, animation: "none" }} />
-        <Stack.Screen name="streak" options={{ headerShown: false, animation: "none" }} />
-        <Stack.Screen name="profile" options={{ headerShown: false, animation: "none" }} />
-        <Stack.Screen name="settings" options={{ headerShown: false, animation: "none" }} />
+      <Stack screenOptions={{headerShown: false, animation: "none"}}>
+        <Stack.Screen name="(auth)"/>
+        <Stack.Screen name="(tabs)"/>
+        <Stack.Screen name="index"/>
       </Stack>
     </SafeAreaView>
   );

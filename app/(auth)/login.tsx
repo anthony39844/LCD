@@ -10,7 +10,7 @@ export default function login() {
   const [password, setPassword] = useState("");
   
   return (
-    <View style={globalStyles.homeContainer}>
+    <View style={globalStyles.container}>
       <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
       <View>
         <TextInput
@@ -32,10 +32,10 @@ export default function login() {
         <Pressable 
           style={globalStyles.button} 
           onPress={() => {
-              navigation.reset({
+            navigation.reset({
               index: 0,
-              routes: [{ name: 'home' as never }],
-              });
+              routes: [{ name: '(tabs)' as never, params: { screen: 'home' }}],
+            });
           }}>
           <Text style={globalStyles.buttonText}>Log In --{'>'}</Text>
         </Pressable>
