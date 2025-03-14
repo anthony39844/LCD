@@ -24,8 +24,9 @@ export default function Layout() {
           headerBackTitle: "Back"
         }}>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ title: "Login" }} />
-        <Stack.Screen name="signup" options={{ title: "Sign Up" }} />
+        <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="signup" options={{ headerShown: false }} />
+        <Stack.Screen name="home" options={{ headerShown: false }} />
       </Stack>
     </SafeAreaView>
   );
