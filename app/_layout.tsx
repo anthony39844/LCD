@@ -1,8 +1,10 @@
 import { Stack } from "expo-router";
 import { SafeAreaView, StatusBar, Platform, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
+import {getGlobalStyles} from "@/styles/globalStyles";
 
 export default function Layout() {
+  const globalStyles = getGlobalStyles();
   const [fontsLoaded] = useFonts({
     "JetBrainsMono-Regular": require("../assets/fonts/JetBrainsMono-Regular.ttf"),
   });
@@ -12,21 +14,18 @@ export default function Layout() {
   return (
     <SafeAreaView
       style={{
-        flex: 1,
-        backgroundColor: "lightblue",
+        ...globalStyles.safeView,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: "lightblue" }, 
-          headerTintColor: "white",
-          headerBackTitle: "Back"
-        }}>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="login" options={{ headerShown: false }} />
-        <Stack.Screen name="signup" options={{ headerShown: false }} />
-        <Stack.Screen name="home" options={{ headerShown: false }} />
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false, animation: "none" }} />
+        <Stack.Screen name="login" options={{ headerShown: false, animation: "none" }} />
+        <Stack.Screen name="signup" options={{ headerShown: false, animation: "none" }} />
+        <Stack.Screen name="home" options={{ headerShown: false, animation: "none" }} />
+        <Stack.Screen name="streak" options={{ headerShown: false, animation: "none" }} />
+        <Stack.Screen name="profile" options={{ headerShown: false, animation: "none" }} />
+        <Stack.Screen name="settings" options={{ headerShown: false, animation: "none" }} />
       </Stack>
     </SafeAreaView>
   );

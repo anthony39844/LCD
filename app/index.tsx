@@ -1,12 +1,13 @@
-import { Text, View, Pressable, ActivityIndicator } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import globalStyles from "@/styles/globalStyles";
+import {getGlobalStyles} from "@/styles/globalStyles";
 
 export default function Index() {
   const router = useRouter(); 
+  const globalStyles = getGlobalStyles();
 
   return (
-      <View style={globalStyles.container}>
+      <View style={globalStyles.homeContainer}>
         <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
         <View style={globalStyles.buttonContainer}>
           <Pressable style={globalStyles.button} onPress={() => router.push("/signup")}>

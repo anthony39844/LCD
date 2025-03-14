@@ -1,36 +1,25 @@
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 import React from 'react'
+import { RelativePathString, useRouter } from "expo-router";
+import {getGlobalStyles} from '@/styles/globalStyles'
 
-export default function Navbar() {
+type NavbarProps = {
+  clicked: string;
+};
+
+export default function Navbar(props: NavbarProps) {
+  const globalStyles = getGlobalStyles();
+  const router = useRouter();
+  const tabs: string[] = ["home", "streak", "profile", "settings"];
   return (
-    <View style={styles.navbar}>
-        <Pressable>
-            <Text style={styles.navbarText}>Home</Text>
-        </Pressable>
-        <Pressable>
-            <Text style={styles.navbarText}>Streak</Text>
-        </Pressable>
-        <Pressable>
-            <Text style={styles.navbarText}>Profile</Text>
-        </Pressable>
+    <View style={globalStyles.navbar}>
+        {tabs.map((tab) => {
+          return (
+            <Pressable style={{...globalStyles.navItem, width: `${90 / (tabs.length)}%`}} key={tab} onPress={() => router.replace(`/${tab}` as RelativePathString)}>
+                <Text style={props.clicked == tab ? globalStyles.focusedNavbarText : globalStyles.navbarText}>{tab.toUpperCase()}</Text>
+            </Pressable>
+          )}
+      )}
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  navbar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: 'white',
-    padding: 10,
-    gap: 10,
-    width: '100%',
-  },
-  navbarText: {
-    padding: 10,
-    fontFamily: 'JetBrainsMono-Regular',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-})
-           

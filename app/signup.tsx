@@ -1,17 +1,19 @@
 import { View, Text, Pressable, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import { useRouter } from "expo-router";
-import globalStyles from '@/styles/globalStyles'
+import {getGlobalStyles} from '@/styles/globalStyles'
+import { useNavigation } from '@react-navigation/native';
+
 
 
 export default function signup() {
-  const router = useRouter(); 
+  const globalStyles = getGlobalStyles();
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
   return (
-    <View style={globalStyles.container}>
+    <View style={globalStyles.homeContainer}>
     <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
     <View>
       <TextInput
@@ -37,7 +39,14 @@ export default function signup() {
       />
     </View>
     <View style={globalStyles.buttonContainer}>
-      <Pressable style={globalStyles.button} onPress={() => router.push("/home")}>
+      <Pressable 
+        style={globalStyles.button} 
+        onPress={() => {
+            navigation.reset({
+            index: 0,
+            routes: [{ name: 'home' as never }],
+            });
+        }}>
         <Text style={globalStyles.buttonText}>Sign Up --{'>'}</Text>
       </Pressable>
     </View>
