@@ -2,7 +2,6 @@ import { useColors } from "./colors"
 import { StyleSheet } from 'react-native'
 
 export default function calendarStyles() {
-    const colors = useColors()
     return StyleSheet.create({
         container: {
             width: "100%", 

@@ -9,7 +9,7 @@ export default function navBarStyles() {
             flexDirection: 'row',
             flexWrap: 'wrap',
             justifyContent: 'space-between',
-            backgroundColor: colors.primary,
+            backgroundColor: colors.themeColors.primary,
             padding: 10,
             paddingBottom: 0,
             gap: 10,
@@ -20,7 +20,7 @@ export default function navBarStyles() {
         },  
         focusedNavItem: {
             alignItems: 'center',
-            borderBottomColor: colors.border,
+            borderBottomColor: colors.themeColors.border,
             borderBottomWidth: 5,
             borderBottomEndRadius: 5,
             borderBottomStartRadius: 5,
@@ -30,14 +30,14 @@ export default function navBarStyles() {
             fontSize: 12,
             fontWeight: 'bold',
             paddingVertical: 10,
-            color: colors.textUnfocused,
+            color: colors.themeColors.textUnfocused,
         },
         focusedNavbarText: {
             fontFamily: 'JetBrainsMono-Regular',
             fontWeight: 'bold',
             fontSize: 12,
             paddingVertical: 10,
-            color: colors.text,
+            color: colors.themeColors.text,
         },
     })
 }

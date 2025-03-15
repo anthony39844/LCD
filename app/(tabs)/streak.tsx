@@ -11,9 +11,7 @@ export default function streak() {
         <View style={globalStyles.container}>
             <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
             <View style={globalStyles.module}>
-                <Text style={globalStyles.moduleText}>Daily Question</Text>
-                <Text style={globalStyles.moduleText}>Question 1</Text>
-                <Text style={globalStyles.moduleText}>Streak: </Text>
+                <Text style={{ fontSize: 40 }}>🔥</Text>
             </View>
             <View style={globalStyles.module}>
                 <Calendar full={true}/>

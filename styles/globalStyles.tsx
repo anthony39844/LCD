@@ -28,6 +28,8 @@ export function getGlobalStyles(isDarkMode: boolean) {
       textAlign: "center",
       color: colors.text,
     },
+
+
     buttonContainer: {
       display: "flex",
       flexDirection: "column",
@@ -48,14 +50,14 @@ export function getGlobalStyles(isDarkMode: boolean) {
     buttonText: {
       fontFamily: "JetBrainsMono-Regular",
       color: colors.text,
-      fontSize: 18,
+      fontSize: 15,
       fontWeight: "bold",
     },
     secondaryBtn: {
       backgroundColor: colors.primary,
       paddingVertical: 10,
       paddingHorizontal: 20,
-      borderRadius: 20,
+      borderRadius: 50,
       alignItems: "center",
       alignSelf: "stretch",
       borderColor: colors.border,
@@ -75,7 +77,7 @@ export function getGlobalStyles(isDarkMode: boolean) {
       backgroundColor: colors.secondary,
       padding: 20,
       margin: 10,
-      borderRadius: 20,
+      borderRadius: 40,
       width: 300,
       borderColor: colors.border,
       borderWidth: 1,
@@ -88,5 +90,10 @@ export function getGlobalStyles(isDarkMode: boolean) {
       fontWeight: "bold",
       textAlign: "center",
     },
-  });
-}
+    moduleTitle: {
+      fontFamily: "JetBrainsMono-Regular",
+      fontSize: 24,
+      fontWeight: "bold",
+      textAlign: "center",
+    }, 
+})};
