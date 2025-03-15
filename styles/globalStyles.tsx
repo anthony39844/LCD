@@ -1,10 +1,17 @@
 import { StyleSheet } from 'react-native';
+import { useColors } from './colors';
 
-
-const globalStyles = StyleSheet.create({
-    container: {
-      backgroundColor: "lightblue",
+export function getGlobalStyles() {
+  const colors = useColors();
+  
+  return StyleSheet.create({
+    safeView: {
       flex: 1,
+      backgroundColor: colors.primary,
+    },
+    container: {
+      backgroundColor: colors.primary,
+      height: "100%",
       alignItems: "center",
       display: "flex",
       flexDirection: "column",
@@ -12,9 +19,10 @@ const globalStyles = StyleSheet.create({
     },
     title: {
       fontFamily: "JetBrainsMono-Regular",
-      fontSize: 30,
+      fontSize: 36,
       fontWeight: "bold",
       textAlign: "center",
+      color: colors.text,
     },
     buttonContainer: {
       display: "flex",
@@ -24,28 +32,57 @@ const globalStyles = StyleSheet.create({
       gap: 20,
     },
     button: {
-      backgroundColor: "white", 
-      paddingVertical: 12,
-      paddingHorizontal: 24,
+      backgroundColor: colors.secondary, 
+      paddingVertical: 10,
+      paddingHorizontal: 20,
       borderRadius: 20,
       alignItems: "center",
-      alignSelf: "stretch"
+      alignSelf: "stretch", 
+      borderColor: colors.border,
+      borderWidth: 1,
     },
     buttonText: {
       fontFamily: "JetBrainsMono-Regular",
-      color: "black",
+      color: colors.text,
       fontSize: 18,
       fontWeight: "bold",
     },
+    secondaryBtn: {     
+      backgroundColor: colors.primary, 
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 20,
+      alignItems: "center",
+      alignSelf: "stretch", 
+      borderColor: colors.border,
+      borderWidth: 1,
+    },
+
     inputBox: {
-        backgroundColor: "white",
+        backgroundColor: colors.secondary,
         borderRadius: 20,
         padding: 10,
         margin: 10,
         width: 300,
         textAlign: "center",
-    }
-});
+    },
 
 
-export default globalStyles;
+    module: {
+      backgroundColor: colors.secondary,
+      padding: 20,
+      margin: 10,
+      borderRadius: 20,
+      width: 300,
+      borderColor: colors.border,
+      borderWidth: 1,
+      alignItems: "center",
+      gap: 10,
+    },
+    moduleText: {
+      fontFamily: "JetBrainsMono-Regular",
+      fontSize: 18,
+      fontWeight: "bold",
+      textAlign: "center",
+    },
+})};

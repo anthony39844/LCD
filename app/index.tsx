@@ -1,9 +1,10 @@
-import { Text, View, Pressable, ActivityIndicator } from "react-native";
+import { Text, View, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import globalStyles from "@/styles/globalStyles";
+import {getGlobalStyles} from "@/styles/globalStyles";
 
 export default function Index() {
   const router = useRouter(); 
+  const globalStyles = getGlobalStyles();
 
   return (
       <View style={globalStyles.container}>

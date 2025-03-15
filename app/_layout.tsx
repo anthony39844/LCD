@@ -1,33 +1,38 @@
 import { Stack } from "expo-router";
 import { SafeAreaView, StatusBar, Platform, ActivityIndicator } from "react-native";
 import { useFonts } from "expo-font";
+import {getGlobalStyles} from "@/styles/globalStyles";
+import { useEffect } from "react";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
+  const globalStyles = getGlobalStyles();
   const [fontsLoaded] = useFonts({
     "JetBrainsMono-Regular": require("../assets/fonts/JetBrainsMono-Regular.ttf"),
   });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
       return <ActivityIndicator size="large" />;
   }
   return (
     <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: "lightblue",
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      }}
+      style={[
+        globalStyles.safeView,
+        {paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0}
+      ]}
     >
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: "lightblue" }, 
-          headerTintColor: "white",
-          headerBackTitle: "Back"
-        }}>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen 
-          name="login" 
-          options={{ title: "Login" }} />
-        <Stack.Screen name="signup" options={{ title: "Sign Up" }} />
+      <Stack screenOptions={{headerShown: false, animation: "none"}}>
+        <Stack.Screen name="(auth)"/>
+        <Stack.Screen name="(tabs)"/>
+        <Stack.Screen name="index"/>
       </Stack>
     </SafeAreaView>
   );
