@@ -1,13 +1,13 @@
-import { View, Text, Pressable, TextInput } from 'react-native'
-import React, { useState } from 'react'
-import {getGlobalStyles} from '@/styles/globalStyles'
-import { useNavigation } from '@react-navigation/native';
+import { View, Text, Pressable, TextInput } from "react-native";
+import React, { useState, useMemo } from "react";
+import { getGlobalStyles } from "@/styles/globalStyles";
+import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
-
-
+import { useDarkMode } from "@/contexts/darkModeContext";
 
 export default function signup() {
-  const globalStyles = getGlobalStyles();
+  const { isDarkMode } = useDarkMode();
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
   const navigation = useNavigation();
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -40,23 +40,26 @@ export default function signup() {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <View style={{gap: 20}}>
+      <View style={{ gap: 20 }}>
         <View style={globalStyles.buttonContainer}>
-          <Pressable 
-            style={globalStyles.button} 
+          <Pressable
+            style={globalStyles.button}
             onPress={() => {
-                navigation.reset({
+              navigation.reset({
                 index: 0,
-                routes: [{ name: '(tabs)' as never, params: { screen: 'home' }}],
-                });
-            }}>
-            <Text style={globalStyles.buttonText}>Sign Up --{'>'}</Text>
+                routes: [
+                  { name: "(tabs)" as never, params: { screen: "home" } },
+                ],
+              });
+            }}
+          >
+            <Text style={globalStyles.buttonText}>Sign Up --{">"}</Text>
           </Pressable>
         </View>
-        <Pressable onPress={() => router.replace('/login')}>
+        <Pressable onPress={() => router.replace("/login")}>
           <Text>Already have an account?</Text>
         </Pressable>
       </View>
     </View>
-  )
+  );
 }

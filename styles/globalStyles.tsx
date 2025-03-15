@@ -1,9 +1,13 @@
-import { StyleSheet } from 'react-native';
-import { useColors } from './colors';
+import { StyleSheet } from "react-native";
 
-export function getGlobalStyles() {
-  const colors = useColors();
-  
+export function getGlobalStyles(isDarkMode: boolean) {
+  const colors = {
+    primary: !isDarkMode ? "#6B95D1" : "#181818",
+    secondary: !isDarkMode ? "white" : "#658DAF",
+    text: !isDarkMode ? "black" : "white",
+    textUnfocused: !isDarkMode ? "white" : "grey",
+    border: !isDarkMode ? "black" : "white",
+  };
   return StyleSheet.create({
     safeView: {
       flex: 1,
@@ -32,12 +36,12 @@ export function getGlobalStyles() {
       gap: 20,
     },
     button: {
-      backgroundColor: colors.secondary, 
+      backgroundColor: colors.secondary,
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 20,
       alignItems: "center",
-      alignSelf: "stretch", 
+      alignSelf: "stretch",
       borderColor: colors.border,
       borderWidth: 1,
     },
@@ -47,26 +51,25 @@ export function getGlobalStyles() {
       fontSize: 18,
       fontWeight: "bold",
     },
-    secondaryBtn: {     
-      backgroundColor: colors.primary, 
+    secondaryBtn: {
+      backgroundColor: colors.primary,
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 20,
       alignItems: "center",
-      alignSelf: "stretch", 
+      alignSelf: "stretch",
       borderColor: colors.border,
       borderWidth: 1,
     },
 
     inputBox: {
-        backgroundColor: colors.secondary,
-        borderRadius: 20,
-        padding: 10,
-        margin: 10,
-        width: 300,
-        textAlign: "center",
+      backgroundColor: colors.secondary,
+      borderRadius: 20,
+      padding: 10,
+      margin: 10,
+      width: 300,
+      textAlign: "center",
     },
-
 
     module: {
       backgroundColor: colors.secondary,
@@ -85,4 +88,5 @@ export function getGlobalStyles() {
       fontWeight: "bold",
       textAlign: "center",
     },
-})};
+  });
+}

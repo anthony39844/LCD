@@ -1,14 +1,16 @@
-import { View, Text, TextInput, Pressable } from 'react-native'
-import React, {useState} from 'react'
-import {getGlobalStyles} from "@/styles/globalStyles";
-import { useNavigation } from '@react-navigation/native';
-
+import { View, Text, TextInput, Pressable } from "react-native";
+import React, { useState, useMemo } from "react";
+import { getGlobalStyles } from "@/styles/globalStyles";
+import { useNavigation } from "@react-navigation/native";
+import { useDarkMode } from "@/contexts/darkModeContext";
 export default function login() {
-  const globalStyles = getGlobalStyles();
+  const { isDarkMode } = useDarkMode();
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+
   const navigation = useNavigation();
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  
+
   return (
     <View style={globalStyles.container}>
       <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
@@ -29,17 +31,18 @@ export default function login() {
         />
       </View>
       <View style={globalStyles.buttonContainer}>
-        <Pressable 
-          style={globalStyles.button} 
+        <Pressable
+          style={globalStyles.button}
           onPress={() => {
             navigation.reset({
               index: 0,
-              routes: [{ name: '(tabs)' as never, params: { screen: 'home' }}],
+              routes: [{ name: "(tabs)" as never, params: { screen: "home" } }],
             });
-          }}>
-          <Text style={globalStyles.buttonText}>Log In --{'>'}</Text>
+          }}
+        >
+          <Text style={globalStyles.buttonText}>Log In --{">"}</Text>
         </Pressable>
       </View>
     </View>
-  )
+  );
 }
