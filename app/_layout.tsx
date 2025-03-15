@@ -24,10 +24,10 @@ export default function Layout() {
   }
   return (
     <SafeAreaView
-      style={{
-        ...globalStyles.safeView,
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      }}
+      style={[
+        globalStyles.safeView,
+        {paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0}
+      ]}
     >
       <Stack screenOptions={{headerShown: false, animation: "none"}}>
         <Stack.Screen name="(auth)"/>

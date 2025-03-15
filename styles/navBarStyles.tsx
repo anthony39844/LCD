@@ -11,6 +11,7 @@ export default function navBarStyles() {
             justifyContent: 'space-between',
             backgroundColor: colors.primary,
             padding: 10,
+            paddingBottom: 0,
             gap: 10,
             width: '100%',
         },
