@@ -7,10 +7,10 @@ export function getGlobalStyles() {
   return StyleSheet.create({
     safeView: {
       flex: 1,
-      backgroundColor: colors.primary,
+      backgroundColor: colors.themeColors.primary,
     },
     container: {
-      backgroundColor: colors.primary,
+      backgroundColor: colors.themeColors.primary,
       height: "100%",
       alignItems: "center",
       display: "flex",
@@ -22,8 +22,10 @@ export function getGlobalStyles() {
       fontSize: 36,
       fontWeight: "bold",
       textAlign: "center",
-      color: colors.text,
+      color: colors.themeColors.text,
     },
+
+
     buttonContainer: {
       display: "flex",
       flexDirection: "column",
@@ -32,34 +34,33 @@ export function getGlobalStyles() {
       gap: 20,
     },
     button: {
-      backgroundColor: colors.secondary, 
+      backgroundColor: colors.themeColors.secondary, 
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 20,
       alignItems: "center",
       alignSelf: "stretch", 
-      borderColor: colors.border,
+      borderColor: colors.themeColors.border,
       borderWidth: 1,
     },
     buttonText: {
       fontFamily: "JetBrainsMono-Regular",
-      color: colors.text,
-      fontSize: 18,
+      color: colors.themeColors.text,
+      fontSize: 15,
       fontWeight: "bold",
     },
     secondaryBtn: {     
-      backgroundColor: colors.primary, 
+      backgroundColor: colors.themeColors.primary, 
       paddingVertical: 10,
       paddingHorizontal: 20,
-      borderRadius: 20,
+      borderRadius: 50,
       alignItems: "center",
-      alignSelf: "stretch", 
-      borderColor: colors.border,
+      borderColor: "transparent",
       borderWidth: 1,
     },
 
     inputBox: {
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.themeColors.secondary,
         borderRadius: 20,
         padding: 10,
         margin: 10,
@@ -69,12 +70,12 @@ export function getGlobalStyles() {
 
 
     module: {
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.themeColors.secondary,
       padding: 20,
       margin: 10,
-      borderRadius: 20,
+      borderRadius: 40,
       width: 300,
-      borderColor: colors.border,
+      borderColor: colors.themeColors.border,
       borderWidth: 1,
       alignItems: "center",
       gap: 10,
@@ -85,4 +86,10 @@ export function getGlobalStyles() {
       fontWeight: "bold",
       textAlign: "center",
     },
+    moduleTitle: {
+      fontFamily: "JetBrainsMono-Regular",
+      fontSize: 24,
+      fontWeight: "bold",
+      textAlign: "center",
+    }, 
 })};
