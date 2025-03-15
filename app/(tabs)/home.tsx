@@ -1,15 +1,16 @@
 import { View, Text, Pressable, Linking, StyleSheet } from "react-native";
-import React, { useMemo }, { useEffect } from "react";
+import React, { useMemo, useEffect } from "react";
 import { getGlobalStyles } from "@/styles/globalStyles";
 import Calendar from "@/components/Calendar";
 import { useRouter } from "expo-router";
 import { useDarkMode } from "@/contexts/darkModeContext";import { getDailyQuestion } from '@/api/leetcode';
-import { useColors } from '@/styles/colors';
+import { useColors } from "@/styles/colors";
 
 type Difficulty = "Easy" | "Medium" | "Hard";
 
 export default function home() {
   const { isDarkMode } = useDarkMode();
+  const { difficultyColors } = useColors();
   const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
   const router = useRouter();
   const [loading, setLoading] = React.useState(true);
@@ -65,7 +66,7 @@ export default function home() {
           <Text style={globalStyles.moduleTitle}>Daily Question</Text>
           <Text style={globalStyles.moduleText}>{question.number}. {question.name}</Text>
           <Text style={[styles.difficulty, {
-              color: colors.difficultyColors[question.difficulty], 
+              color: difficultyColors[question.difficulty], 
             }]}>{question.difficulty}</Text>
           <Pressable style={globalStyles.secondaryBtn} onPress={openDailyQuestion}>
               <Text style={globalStyles.buttonText}>Start Coding!</Text>
