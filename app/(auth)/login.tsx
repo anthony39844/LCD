@@ -3,9 +3,12 @@ import React, { useState, useMemo } from "react";
 import { getGlobalStyles } from "@/styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import { useDarkMode } from "@/contexts/darkModeContext";
+import { useColors } from "@/styles/colors";
+
 export default function login() {
+  const colors = useColors();
   const { isDarkMode } = useDarkMode();
-  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
 
   const navigation = useNavigation();
   const [user, setUser] = useState("");

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import { useColorScheme } from "react-native";
 
 interface DarkModeContextProps {
@@ -16,13 +16,16 @@ export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({
   const colorScheme = useColorScheme();
   const [isDarkMode, setIsDarkMode] = useState(colorScheme === "dark");
 
+  useEffect(() => {
+    setIsDarkMode(colorScheme === "dark");
+  }, [colorScheme]);
+
   const toggleDarkMode = (mode: string) => {
     if (mode === "device") {
       setIsDarkMode(colorScheme === "dark");
     } else {
       setIsDarkMode(mode === "dark");
     }
-    console.log("Dark mode set to", mode);
   };
 
   return (

@@ -1,5 +1,4 @@
 import { getGlobalStyles } from "@/styles/globalStyles";
-
 import React, { useMemo, useEffect } from "react";
 import { useFonts } from "expo-font";
 import {
@@ -11,17 +10,19 @@ import {
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useDarkMode } from "@/contexts/darkModeContext";
+import { useColors } from "@/styles/colors";
 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const { isDarkMode } = useDarkMode();
+  const colors = useColors();
 
   const [fontsLoaded] = useFonts({
     "JetBrainsMono-Regular": require("../assets/fonts/JetBrainsMono-Regular.ttf"),
   });
   const globalStyles = useMemo(() => {
-    return getGlobalStyles(isDarkMode);
+    return getGlobalStyles(isDarkMode, colors);
   }, [isDarkMode]);
   useEffect(() => {
     if (fontsLoaded) {

@@ -1,13 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";  
 
-export function getGlobalStyles(isDarkMode: boolean) {
-  const colors = {
-    primary: !isDarkMode ? "#6B95D1" : "#181818",
-    secondary: !isDarkMode ? "white" : "#658DAF",
-    text: !isDarkMode ? "black" : "white",
-    textUnfocused: !isDarkMode ? "white" : "grey",
-    border: !isDarkMode ? "black" : "white",
-  };
+export function getGlobalStyles(isDarkMode: boolean, colors: any) {
+
+  colors = colors.themeColors;
+
   return StyleSheet.create({
     safeView: {
       flex: 1,

@@ -3,9 +3,12 @@ import React, {useMemo} from 'react'
 import {getGlobalStyles} from '@/styles/globalStyles'
 import Calendar from '@/components/Calendar';
 import {useDarkMode} from '@/contexts/darkModeContext'
+import { useColors } from '@/styles/colors';
+
 export default function streak() {
- const { isDarkMode } = useDarkMode();
-  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+    const { isDarkMode } = useDarkMode();
+    const colors = useColors();
+    const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
 
     return (
         <View style={globalStyles.container}>

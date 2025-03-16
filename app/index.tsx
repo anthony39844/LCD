@@ -3,11 +3,12 @@ import { View, Text, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { getGlobalStyles } from "@/styles/globalStyles";
 import { useDarkMode } from "@/contexts/darkModeContext";
+import { useColors } from "@/styles/colors";
 
 export default function Index() {
-
+  const colors = useColors();
   const { isDarkMode } = useDarkMode();
-  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
   const router = useRouter();
   return (
     <View style={globalStyles.container}>

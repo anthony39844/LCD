@@ -4,10 +4,12 @@ import { useRouter } from "expo-router";
 import { getGlobalStyles } from "@/styles/globalStyles";
 import { useDarkMode } from "@/contexts/darkModeContext";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useColors } from "@/styles/colors";
 
 export default function Settings() {
   const { isDarkMode } = useDarkMode();
-  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+  const colors = useColors();
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
   const router = useRouter();
   const { toggleDarkMode } = useDarkMode();
 

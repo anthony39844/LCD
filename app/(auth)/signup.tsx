@@ -4,10 +4,12 @@ import { getGlobalStyles } from "@/styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useDarkMode } from "@/contexts/darkModeContext";
+import { useColors } from "@/styles/colors";
 
 export default function signup() {
+  const colors = useColors();
   const { isDarkMode } = useDarkMode();
-  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
   const navigation = useNavigation();
   const router = useRouter();
   const [email, setEmail] = useState("");

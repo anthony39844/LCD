@@ -3,57 +3,64 @@ import React, { useMemo, useEffect } from "react";
 import { getGlobalStyles } from "@/styles/globalStyles";
 import Calendar from "@/components/Calendar";
 import { useRouter } from "expo-router";
-import { useDarkMode } from "@/contexts/darkModeContext";import { getDailyQuestion } from '@/api/leetcode';
 import { useColors } from "@/styles/colors";
+import { useDarkMode } from "@/contexts/darkModeContext";
+import { fetchDailyQuestion } from '@/api/routes';
 
 type Difficulty = "Easy" | "Medium" | "Hard";
 
 export default function home() {
+  const colors = useColors();
   const { isDarkMode } = useDarkMode();
-  const { difficultyColors } = useColors();
-  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode), [isDarkMode]);
+  const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
   const router = useRouter();
   const [loading, setLoading] = React.useState(true);
   const [question, setQuestion] = 
     React.useState<{
       name: string;
       link: string;
-      number: number;
+      date: string;
       difficulty: Difficulty;
     }>({
       name: "",
       link: "",
-      number: 0,
+      date: "",
       difficulty: "Easy", 
     });
 
 
   useEffect(() => {
-    const fetchDailyQuestion = async () => {
+    const fetchDailyLeeCodeQuestion = async () => {
       try {
-        const data = await getDailyQuestion();
+        const data = await fetchDailyQuestion();
         if (data) {
+          let question = data.activeDailyCodingChallengeQuestion
           setQuestion({
-            name: data.questionTitle,
-            link: data.questionLink,
-            number: data.questionFrontendId,
-            difficulty: data.difficulty
+            name: question.question.title,
+            link: "https://leetcode.com" + question.link,
+            date: question.date,
+            difficulty: question.question.difficulty
           });
         }
-      } catch (error) {
+      } catch (error) {   
         console.error("Failed to get daily question:", error);
       }
       finally {
         setLoading(false);
       }
-    };
-  
-    fetchDailyQuestion();
+    }
+    fetchDailyLeeCodeQuestion();
   }, []);
 
   const openDailyQuestion = async () => {
     Linking.openURL(question.link);
   };
+
+  function formatDate(date: string) {
+    const dateObj = new Date(date); 
+    return dateObj.toLocaleDateString();
+  }
+
 
   return (
     <View style={globalStyles.container}>
@@ -64,9 +71,10 @@ export default function home() {
         : 
         <View style={globalStyles.module}>
           <Text style={globalStyles.moduleTitle}>Daily Question</Text>
-          <Text style={globalStyles.moduleText}>{question.number}. {question.name}</Text>
+          <Text style={globalStyles.moduleText}>{formatDate(question.date)}</Text>
+          <Text style={globalStyles.moduleText}>{question.name}</Text>
           <Text style={[styles.difficulty, {
-              color: difficultyColors[question.difficulty], 
+              color: colors.difficultyColors[question.difficulty], 
             }]}>{question.difficulty}</Text>
           <Pressable style={globalStyles.secondaryBtn} onPress={openDailyQuestion}>
               <Text style={globalStyles.buttonText}>Start Coding!</Text>
