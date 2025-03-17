@@ -93,9 +93,36 @@ export function getGlobalStyles(isDarkMode: boolean, colors: any) {
       textAlign: "center",
     }, 
 
+    difficultyText: {
+      paddingVertical: 5,
+      paddingHorizontal: 15,
+      borderRadius: 50,
+      borderWidth: 1,
+      backgroundColor: "#484848",
+      fontSize: 14,
+      fontFamily: "JetBrainsMono-Regular",
+    },
+
     userImg: {
       width: 50,
       height: 50,
       borderRadius: 50,
-    }
+    },
+
+    loading: {
+      backgroundColor: colors.primary,
+      height: "100%",
+      alignItems: "center",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
+    }, 
+    loadingText: {
+      fontFamily: "JetBrainsMono-Regular",
+      fontSize: 24,
+      fontWeight: "bold",
+      textAlign: "center",
+      color: colors.text,
+    },
+
 })};

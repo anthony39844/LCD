@@ -1,8 +1,10 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import Navbar from "@/components/Navbar";
+import { useApiContext } from "@/contexts/apiContext";
 
 export default function TabLayout() {
+  const { loading } = useApiContext();
   return (
 
       <Tabs
@@ -13,7 +15,7 @@ export default function TabLayout() {
           },
         }}
         tabBar={(props) => (
-          <Navbar clicked={props.state.routeNames[props.state.index]} />
+          loading ? null : <Navbar clicked={props.state.routeNames[props.state.index]} />
         )}
       >
         <Tabs.Screen name="home" />
