@@ -4,6 +4,17 @@ import { getGlobalStyles } from "@/styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useDarkMode } from "@/contexts/darkModeContext";
+import data from "../../data.json";
+
+type User = {
+  id: number;
+  username: string;
+  email: string;
+  leetcodeUsername: string;
+  password: string;
+  streak: number;
+  name: string;
+};
 
 export default function signup() {
   const { isDarkMode } = useDarkMode();
@@ -13,6 +24,22 @@ export default function signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [userData, setUserData] = useState<User[]>(data);
+  function handleSignup() {
+    if (email && password && username) {
+      if (userData.find((user) => user.email === email)) {
+        alert("Email already in use");
+      } else if (userData.find((user) => user.username === username)) {
+        alert("Username already in use");
+      } else {
+        setUserData((data) => [...data, { id: 1, username, email, leetcodeUsername: "leetcodeUsername", password, streak: 0, name: "name" }]);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "(tabs)" as never, params: { screen: "home" } }],
+        });
+      }
+    }
+  }
 
   return (
     <View style={globalStyles.container}>
@@ -45,12 +72,7 @@ export default function signup() {
           <Pressable
             style={globalStyles.button}
             onPress={() => {
-              navigation.reset({
-                index: 0,
-                routes: [
-                  { name: "(tabs)" as never, params: { screen: "home" } },
-                ],
-              });
+              handleSignup();
             }}
           >
             <Text style={globalStyles.buttonText}>Sign Up --{">"}</Text>
