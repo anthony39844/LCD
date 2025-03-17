@@ -12,11 +12,10 @@ export default function home() {
   const { isDarkMode } = useDarkMode();
   const globalStyles = useMemo(() => getGlobalStyles(isDarkMode, colors), [isDarkMode]);
   const router = useRouter();
-  const { fetchDailyLeetCodeQuestion, question, loading, fetchUserData } = useApiContext();
+  const { fetchData, question, loading } = useApiContext();
 
   React.useEffect(() => {
-    fetchDailyLeetCodeQuestion();
-    fetchUserData();
+    fetchData();
   }, []);
 
   const openDailyQuestion = async () => {

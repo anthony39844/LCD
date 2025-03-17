@@ -14,7 +14,7 @@ async function fetchData(query: {query: string, variables: {} }) {
 async function fetchDailyQuestion() {
     const query = {
       query: `
-        query dailyQuestion {
+        query questionOfToday {
           activeDailyCodingChallengeQuestion {
             date
             link
@@ -71,7 +71,6 @@ async function fetchUser(username: string) {
 
   return await fetchData(query)
 }
-  
 
 export { fetchDailyQuestion, fetchSolvedProblems, fetchUser }
   
