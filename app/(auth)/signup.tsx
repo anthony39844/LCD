@@ -1,4 +1,4 @@
-import { View, Text, Pressable, TextInput } from "react-native";
+import { View, Text, Pressable, TextInput, TouchableWithoutFeedback, Keyboard } from "react-native";
 import React, { useState, useMemo } from "react";
 import { getGlobalStyles } from "@/styles/globalStyles";
 import { useNavigation } from "@react-navigation/native";
@@ -27,6 +27,7 @@ export default function signup() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [userData, setUserData] = useState<User[]>(data);
+
   function handleSignup() {
     if (email && password && username) {
       if (userData.find((user) => user.email === email)) {
@@ -44,46 +45,46 @@ export default function signup() {
   }
 
   return (
-    <View style={globalStyles.container}>
-      <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
-      <View>
-        <TextInput
-          style={globalStyles.inputBox}
-          placeholder="Username"
-          placeholderTextColor="black"
-          value={username}
-          onChangeText={(username) => setUsername(username)}
-        />
-        <TextInput
-          style={globalStyles.inputBox}
-          placeholder="Email"
-          placeholderTextColor="black"
-          value={email}
-          onChangeText={(email) => setEmail(email)}
-        />
-        <TextInput
-          style={globalStyles.inputBox}
-          placeholder="Password"
-          placeholderTextColor="black"
-          value={password}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
-      <View style={{ gap: 20 }}>
-        <View style={globalStyles.buttonContainer}>
-          <Pressable
-            style={globalStyles.button}
-            onPress={() => {
-              handleSignup();
-            }}
-          >
-            <Text style={globalStyles.buttonText}>Sign Up --{">"}</Text>
-          </Pressable>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={globalStyles.container}>
+        <Text style={globalStyles.title}>LeetCode{"\n"}Dailys</Text>
+        <View>
+          <TextInput
+            style={globalStyles.inputBox}
+            placeholder="Username"
+            placeholderTextColor="black"
+            value={username}
+            onChangeText={(username) => setUsername(username)}
+          />
+          <TextInput
+            style={globalStyles.inputBox}
+            placeholder="Email"
+            placeholderTextColor="black"
+            value={email}
+            onChangeText={(email) => setEmail(email)}
+          />
+          <TextInput
+            style={globalStyles.inputBox}
+            placeholder="Password"
+            placeholderTextColor="black"
+            value={password}
+            onChangeText={(password) => setPassword(password)}
+          />
         </View>
-        <Pressable onPress={() => router.replace("/login")}>
-          <Text>Already have an account?</Text>
-        </Pressable>
+          <View style={globalStyles.buttonContainer}>
+            <Pressable
+              style={globalStyles.button}
+              onPress={() => {
+                handleSignup();
+              }}
+            >
+              <Text style={globalStyles.buttonText}>Sign Up --{">"}</Text>
+            </Pressable>
+            <Pressable onPress={() => router.replace("/login")}>
+              <Text style={globalStyles.smallText}>Already have an account?</Text>
+            </Pressable>
+          </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }

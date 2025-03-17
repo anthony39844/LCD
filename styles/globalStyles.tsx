@@ -125,4 +125,11 @@ export function getGlobalStyles(isDarkMode: boolean, colors: any) {
       color: colors.text,
     },
 
+    smallText: {
+      fontFamily: "JetBrainsMono-Regular",
+      fontSize: 12,
+      color: colors.text, 
+      padding: 10,
+    }
+
 })};

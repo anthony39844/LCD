@@ -16,5 +16,14 @@
         "username": "johndoe",
         "password": "password",
         "streak": 0
+    },  
+    {
+        "id": 3,
+        "name": "AZ",
+        "email": "a",
+        "leetcodeUsername": "anthony39844",
+        "username": "az",
+        "password": "az",
+        "streak": 0
     }
 ]
