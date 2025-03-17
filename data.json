@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Jason Chen",
+        "email": "jchen.012004@gmail.com",
+        "leetcodeUsername": "JasonChen14",
+        "username": "jasonchen",
+        "password": "password",
+        "streak": 0
+    }, 
+    {
+        "id": 2,
+        "name": "John Doe",
+        "email": "a",
+        "leetcodeUsername": "JohnDoe",
+        "username": "johndoe",
+        "password": "password",
+        "streak": 0
+    }
+]
