@@ -20,11 +20,13 @@ export default function home() {
       name: string;
       link: string;
       date: string;
+      id: string;
       difficulty: Difficulty;
     }>({
       name: "",
       link: "",
       date: "",
+      id: "",
       difficulty: "Easy", 
     });
 
@@ -39,6 +41,7 @@ export default function home() {
             name: question.question.title,
             link: "https://leetcode.com" + question.link,
             date: question.date,
+            id: question.question.frontendQuestionId,
             difficulty: question.question.difficulty
           });
         }
@@ -72,7 +75,7 @@ export default function home() {
         <View style={globalStyles.module}>
           <Text style={globalStyles.moduleTitle}>Daily Question</Text>
           <Text style={globalStyles.moduleText}>{formatDate(question.date)}</Text>
-          <Text style={globalStyles.moduleText}>{question.name}</Text>
+          <Text style={globalStyles.moduleText}>{question.id}. {question.name}</Text>
           <Text style={[styles.difficulty, {
               color: colors.difficultyColors[question.difficulty], 
             }]}>{question.difficulty}</Text>

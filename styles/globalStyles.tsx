@@ -92,4 +92,10 @@ export function getGlobalStyles(isDarkMode: boolean, colors: any) {
       fontWeight: "bold",
       textAlign: "center",
     }, 
+
+    userImg: {
+      width: 50,
+      height: 50,
+      borderRadius: 50,
+    }
 })};
